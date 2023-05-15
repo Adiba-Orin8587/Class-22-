@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+
+<body>
+    <h1 style="color: rgb(175, 175, 175);">Welcome to our event</h1>
+
+    <button onclick='alert("It can be harmful ")'>Click me</button>
+    <button onclick='redColor()'>Click Red</button>
+    <button onclick='greenColor()'>Click Green</button>
+    <button id='yellowColor'>Click Yellow</button>
+    <button id='blueColor'>Click Blue</button>
+    <button id='goldenColor'>Click golden</button>
+    <button id='blackColor'>Click black</button>
+
+
+    <section class="comment" style="margin-top: 10%; color: rgb(81, 80, 80);">
+        <div id="comment-box">
+            <h1>Add your comment here</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis corrupti aspernatur libero rerum
+                impedit quaerat ut exercitationem distinctio molestias, ex soluta unde, cupiditate voluptates, illo
+                dolorum quasi ab ad maxime.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis corrupti aspernatur libero rerum
+                impedit quaerat ut exercitationem distinctio molestias, ex soluta unde, cupiditate voluptates, illo
+                dolorum quasi ab ad maxime.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis corrupti aspernatur libero rerum
+                impedit quaerat ut exercitationem distinctio molestias, ex soluta unde, cupiditate voluptates, illo
+                dolorum quasi ab ad maxime.</p>
+
+        </div>
+        <div>
+            <textarea name="" id="new-comment" cols="50" rows="7"></textarea>
+            <br>
+            <button id="click-post" class="clickPost">
+                Post
+            </button>
+        </div>
+    </section>
+
+    <section style="margin-top:10% ">
+        <h1>Delete System</h1>
+        <h3 id="delete">Once you delete a repository, there is no going back. Please be certain.</h3>
+        <input style="" id="delete-confirm" type="text" placeholder="type here">
+        <button style="background-color: rgb(172, 36, 36);color: #ffffff; margin:5px ;" id="delete-button"
+            disabled>Delete</button>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function redColor() {
+            document.body.style.background = 'red'
+        }
+
+        function greenColor() {
+            document.body.style.background = 'green'
+        }
+        const yellowButton = document.getElementById('yellowColor')
+        yellowButton.onclick = yellowColor
+        function yellowColor() {
+            document.body.style.background = 'yellow'
+        }
+
+        const blueButton = document.getElementById('blueColor')
+        blueButton.onclick = function () {
+            document.body.style.background = 'skyBlue'
+        }
+
+        const goldenButton = document.getElementById('goldenColor')
+        goldenButton.addEventListener('click', function () {
+            document.body.style.background = 'gold'
+        })
+
+        document.getElementById('blackColor').addEventListener('click', function () {
+            document.body.style.background = 'black'
+
+        })
+
+        const posts = document.getElementsByClassName('clickPost')
+        console.log(posts);
+        for (const post of posts) {
+            post.style.margin = '20px 4px 1px 6px'
+            post.style.padding = '13px 37px 13px 37px'
+            post.style.border = '0px '
+            post.style.fontSize = '18px '
+            post.style.background = '#1aa8e6c2'
+            post.style.color = 'white'
+            post.style.borderRadius = '30px'
+        }
+
+        document.getElementById('click-post').addEventListener('click', function () {
+
+            const textInput = document.getElementById('new-comment')
+            const text = textInput.value
+
+            const p = document.createElement('p')
+            p.innerText = text
+
+            const box = document.getElementById('comment-box')
+            box.appendChild(p)
+
+            textInput.value = ''
+        })
+
+        document.getElementById('delete-button').addEventListener('click', function () {
+            document.getElementById('delete').style.display = 'none'
+
+        })
+
+        document.getElementById('delete-confirm').addEventListener('blur', function () {
+            document.body.style.backgroundColor = 'white'
+
+        })
+
+        document.getElementById('delete-confirm').addEventListener('keyup', function (event) {
+            const deletedFile = document.getElementById('delete-confirm')
+            const deletedButton = document.getElementById('delete-button')
+
+            if (event.target.value == 'Delete') {
+                deletedButton.removeAttribute('disabled')
+
+            }
+            else {
+                deletedButton.setAttribute('disabled', true)
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
